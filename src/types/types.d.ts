@@ -29,10 +29,11 @@ declare global {
 
     interface RecipesI {
         strMeal: string;
-        idMeal: number;
+        idMeal: string;
         strMealThumb: string;
         strCategory: string;
         strArea: string;
+        [key: string]: string | null;
     }
 
     interface MealWithCategoryI {
@@ -45,6 +46,14 @@ declare global {
         recipesLoading: boolean,
         recipesError: string,
         filteredRecipes: MealWithCategoryI[];
+    }
+
+    // Recipe single local state
+
+    interface RecipeLocalStateI {
+        data: RecipesI | null;
+        loading: boolean;
+        error: string;
     }
 
 }

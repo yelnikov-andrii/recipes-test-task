@@ -1,17 +1,19 @@
 import React from 'react'
 import Categories from './Categories'
-import { Divider } from '@mui/material'
 import Recipes from './Recipes'
 import MyPagination from './MyPagination'
+import MyDivider from '../ui/MyDivider'
+import Search from './Search'
 
 const Main = () => {
 
   return (
     <div>
       <Categories />
-      <Divider sx={{ margin: '24px 0' }} />
+      <MyDivider />
+      <Search />
       <Recipes />
-      <Divider sx={{ margin: '24px 0' }} />
+      <MyDivider />
       <MyPagination />
     </div>
   )

@@ -1,15 +1,16 @@
-import { AppBar, Toolbar, Typography, Button } from '@mui/material'
+import { AppBar, Toolbar, Typography } from '@mui/material'
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Header = () => {
   return (
     <AppBar position="static">
       <Toolbar>
-        <Typography variant="h6" sx={{ flexGrow: 1 }}>
-          Recipes
-        </Typography>
-        
-        <Button color="inherit">Login</Button>
+        <Link to="/">
+          <Typography variant="h6" sx={{ flexGrow: 1 }}>
+            Main page
+          </Typography>
+        </Link>
       </Toolbar>
     </AppBar>
   )

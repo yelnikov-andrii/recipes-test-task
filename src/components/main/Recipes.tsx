@@ -21,7 +21,7 @@ const Recipes = () => {
             Рецепти категорії {selectedCategory?.strCategory}
           </Typography>
           <Grid2 container spacing={4}>
-            {displayingRecipes.map((recipe: RecipesI) => (
+            {displayingRecipes?.map((recipe: RecipesI) => (
               <Grid2 size={{ xs: 12, sm: 6, md: 4, lg: 3 }} key={recipe.idMeal}>
                 <Card recipeId={recipe.idMeal} />
               </Grid2>
@@ -34,7 +34,7 @@ const Recipes = () => {
             Рецепти усі
           </Typography>
           <Grid2 container spacing={4}>
-            {displayingRecipes.map((recipe: RecipesI) => (
+            {displayingRecipes?.map((recipe: RecipesI) => (
               <Grid2 size={{ xs: 12, sm: 6, md: 4, lg: 3 }} key={recipe.idMeal}>
                 <Card recipeId={recipe.idMeal} />
               </Grid2>
