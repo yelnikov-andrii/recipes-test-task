@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchAllRecipes } from './app/action-creator/recipes/fetchAllRecipes';
 import { filterRecipes } from './app/features/recipes/recipesSlice';
 import Single from './components/single/Single';
+import Favourites from './components/favourites/Favourites';
 
 function App() {
   const dispatch: AppDispatch = useDispatch();
@@ -29,7 +30,6 @@ function App() {
 
 
   useEffect(() => {
-    console.log(recipes, 'recipes')
     if (recipes.length > 0) {
       if (selectedCategory) {
         dispatch(filterRecipes(selectedCategory.strCategory));
@@ -48,6 +48,8 @@ function App() {
           <Route element={<Main />} path="/">
           </Route>
           <Route element={<Single />} path="/meals/:mealId">
+          </Route>
+          <Route element={<Favourites />} path="/favourites">
           </Route>
         </Routes>
       </div>

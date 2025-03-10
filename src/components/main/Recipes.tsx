@@ -7,7 +7,7 @@ const Recipes = () => {
   const filteredRecipes = useSelector((state: RootState) => state.recipes.filteredRecipes);
   const selectedCategory = useSelector((state: RootState) => state.categories.selectedCategory);
   const { currentPage, itemsPerPage } = useSelector((state: RootState) => state.pagination);
-  
+
   const firstItem = (currentPage - 1) * itemsPerPage;
   const lastItem = firstItem + itemsPerPage;
 
@@ -22,9 +22,7 @@ const Recipes = () => {
           </Typography>
           <Grid2 container spacing={4}>
             {displayingRecipes?.map((recipe: RecipesI) => (
-              <Grid2 size={{ xs: 12, sm: 6, md: 4, lg: 3 }} key={recipe.idMeal}>
-                <Card recipeId={recipe.idMeal} />
-              </Grid2>
+              <Card recipeId={recipe.idMeal} />
             ))}
           </Grid2>
         </>
@@ -35,9 +33,7 @@ const Recipes = () => {
           </Typography>
           <Grid2 container spacing={4}>
             {displayingRecipes?.map((recipe: RecipesI) => (
-              <Grid2 size={{ xs: 12, sm: 6, md: 4, lg: 3 }} key={recipe.idMeal}>
-                <Card recipeId={recipe.idMeal} />
-              </Grid2>
+              <Card recipeId={recipe.idMeal} />
             ))}
           </Grid2>
         </>
