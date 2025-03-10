@@ -5,15 +5,15 @@ export const fetchCategories = () => {
     return async (dispatch: AppDispatch) => {
       dispatch(getCategories());
       try {
-        const response = await fetch(`${baseUrl}/categories`);
+        const response = await fetch(`${baseUrl}/categories.php`);
 
         if (!response.ok) {
             dispatch(getCategoriesError("Помилка при отриманні категорій"));
             return;
         }
 
-        const categories = await response.json();
-        dispatch(getCategoriesSuccess(categories));
+        const res = await response.json();
+        dispatch(getCategoriesSuccess(res.categories));
       } 
       catch(e: any) {
         dispatch(getCategoriesError(e.message));

@@ -1,11 +1,13 @@
-import { Typography, CircularProgress, List, ListItem, ListItemText } from '@mui/material';
+import { Typography, CircularProgress, List, ListItem, ListItemText, Button } from '@mui/material';
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { setCategory } from '../../app/features/category/categorySlice';
 
 const Categories = () => {
   const { categories, categoriesError, categoriesLoading } = useSelector(
     (state: RootState) => state.categories
   );
+  const dispatch = useDispatch();
 
   if (categoriesError) {
     return (
@@ -25,14 +27,32 @@ const Categories = () => {
     );
   }
 
+  function filterByCategory(category: CategoryI | null) {
+    dispatch(setCategory(category))
+  }
+
   return (
-      <List>
-        {categories.map((category) => (
-          <ListItem key={category.idCategory}>
+    <List sx={{ display: 'flex', gap: 2, overflowX: 'scroll' }}>
+      <ListItem>
+        <Button onClick={() => {
+          filterByCategory(null);
+        }}>
+          <ListItemText>
+            Усі
+          </ListItemText>
+        </Button>
+      </ListItem>
+      {categories?.map((category) => (
+        <ListItem key={category.idCategory}>
+          <Button onClick={() => {
+            filterByCategory(category);
+          }}
+          >
             <ListItemText primary={category.strCategory} />
-          </ListItem>
-        ))}
-      </List>
+          </Button>
+        </ListItem>
+      ))}
+    </List>
   );
 };
 

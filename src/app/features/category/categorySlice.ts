@@ -4,6 +4,7 @@ const initialState: CategoryStateI = {
     categories: [],
     categoriesLoading: false,
     categoriesError: "",
+    selectedCategory: null
 };
 
 export const categoriesSlice = createSlice({
@@ -22,9 +23,12 @@ export const categoriesSlice = createSlice({
             state.categories = [];
             state.categoriesError = action.payload;
             state.categoriesLoading = false;
+        },
+        setCategory: (state: CategoryStateI, action: PayloadAction<CategoryI | null>) => {
+            state.selectedCategory = action.payload;
         }
     },
 });
 
-export const { getCategories, getCategoriesError, getCategoriesSuccess } = categoriesSlice.actions;
+export const { getCategories, getCategoriesError, getCategoriesSuccess, setCategory } = categoriesSlice.actions;
 export default categoriesSlice.reducer;
