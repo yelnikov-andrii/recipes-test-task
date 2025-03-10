@@ -13,7 +13,15 @@ const MyPagination = () => {
 
   const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
     dispatch(setCuurentPage(value));
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
   };
+
+  if (countOfPages <= 1) {
+    return null;
+  }
 
   return (
     <Stack spacing={2}>

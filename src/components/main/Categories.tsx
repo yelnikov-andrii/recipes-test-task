@@ -2,6 +2,7 @@ import { Typography, CircularProgress, List, ListItem, ListItemText, Button } fr
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setCategory } from '../../app/features/category/categorySlice';
+import { setCuurentPage } from '../../app/features/pagination/paginationSlice';
 
 const Categories = () => {
   const { categories, categoriesError, categoriesLoading } = useSelector(
@@ -28,7 +29,8 @@ const Categories = () => {
   }
 
   function filterByCategory(category: CategoryI | null) {
-    dispatch(setCategory(category))
+    dispatch(setCategory(category));
+    dispatch(setCuurentPage(1));
   }
 
   return (
