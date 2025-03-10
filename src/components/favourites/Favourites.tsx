@@ -12,8 +12,6 @@ const Favourites = () => {
         dispatch(deleteRecipeFromFavourites(recipeId));
     };
 
-    console.log(favouriteRecipes, 'fav')
-
     const allIngredients = useMemo(() => {
         const ingredients = favouriteRecipes.flatMap((recipe) => {
             const list = [];
@@ -28,8 +26,6 @@ const Favourites = () => {
 
         return Array.from(new Set(ingredients));
     }, [favouriteRecipes]);
-
-    console.log(allIngredients)
 
     return (
         <Box sx={{ padding: "20px" }}>

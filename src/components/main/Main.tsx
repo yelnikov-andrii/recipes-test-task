@@ -8,9 +8,7 @@ import { useSelector } from 'react-redux'
 import { CircularProgress, Typography } from '@mui/material'
 
 const Main = () => {
-  const { recipes, recipesError, recipesLoading } = useSelector((state: RootState) => state.recipes);
-
-  console.log(recipes, recipesError, recipesLoading)
+  const { recipesError, recipesLoading } = useSelector((state: RootState) => state.recipes);
 
   return (
     <div>
