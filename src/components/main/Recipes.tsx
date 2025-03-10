@@ -7,11 +7,29 @@ const Recipes = () => {
   const filteredRecipes = useSelector((state: RootState) => state.recipes.filteredRecipes);
   const selectedCategory = useSelector((state: RootState) => state.categories.selectedCategory);
   const { currentPage, itemsPerPage } = useSelector((state: RootState) => state.pagination);
+  const appliedQuery = useSelector((state: RootState) => state.search.appliedQuery);
 
   const firstItem = (currentPage - 1) * itemsPerPage;
   const lastItem = firstItem + itemsPerPage;
 
   const displayingRecipes = filteredRecipes[0]?.recipes.slice(firstItem, lastItem);
+
+  if (appliedQuery) {
+    return (
+      <section>
+        <>
+          <Typography variant='h1' sx={{ fontSize: '32px' }}>
+            Рецепти за пошуковим запитом {appliedQuery}
+          </Typography>
+          <Grid2 container spacing={4}>
+            {displayingRecipes?.map((recipe: RecipesI) => (
+              <Card recipeId={recipe.idMeal} />
+            ))}
+          </Grid2>
+        </>
+      </section>
+    )
+  }
 
   return (
     <section>

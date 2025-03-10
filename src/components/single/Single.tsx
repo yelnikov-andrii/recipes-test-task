@@ -1,6 +1,8 @@
 import React from 'react'
 import { useGetRecipeById } from '../../hooks/useGetRecipeById'
-import { Navigate, useParams } from 'react-router-dom';
+import { Link, Navigate, useParams } from 'react-router-dom';
+import { Breadcrumbs, Typography } from '@mui/material';
+import MyDivider from '../ui/MyDivider';
 
 const Single = () => {
     const { mealId } = useParams<{ mealId: string }>();
@@ -47,25 +49,37 @@ const Single = () => {
         }
     }
 
-
-
     return (
-        <article style={{ border: '1px solid #ccc', padding: '10px', borderRadius: '8px', maxWidth: '600px', margin: '10px auto' }}>
-            <img src={strMealThumb} alt={strMeal} style={{ width: '100%', borderRadius: '8px' }} />
-            <h3>{strMeal}</h3>
-            <p><strong>Категорія:</strong> {strCategory}</p>
-            <p><strong>Країна:</strong> {strArea}</p>
+        <>
+            <Breadcrumbs aria-label="breadcrumb" sx={{margin: '24px 0 0 0'}}>
+                <Link color="inherit" to="/">
+                    Back to main page
+                </Link>
 
-            <h4>Інгредієнти:</h4>
-            <ul>
-                {ingredients.map((ingredient: string, index: number) => (
-                    <li key={index}>{ingredient.trim()}</li>
-                ))}
-            </ul>
+                {recipe?.data?.strMeal && (
+                    <Typography sx={{ color: 'text.primary' }}>
+                        {recipe?.data?.strMeal}
+                    </Typography>
+                )}
+            </Breadcrumbs>
+            <MyDivider />
+            <article style={{ border: '1px solid #ccc', padding: '10px', borderRadius: '8px', maxWidth: '600px', margin: '10px auto' }}>
+                <img src={strMealThumb} alt={strMeal} style={{ width: '100%', borderRadius: '8px' }} />
+                <h3>{strMeal}</h3>
+                <p><strong>Категорія:</strong> {strCategory}</p>
+                <p><strong>Країна:</strong> {strArea}</p>
 
-            <h4>Інструкції:</h4>
-            <p>{strInstructions}</p>
-        </article>
+                <h4>Інгредієнти:</h4>
+                <ul>
+                    {ingredients.map((ingredient: string, index: number) => (
+                        <li key={index}>{ingredient.trim()}</li>
+                    ))}
+                </ul>
+
+                <h4>Інструкції:</h4>
+                <p>{strInstructions}</p>
+            </article>
+        </>
     )
 }
 
